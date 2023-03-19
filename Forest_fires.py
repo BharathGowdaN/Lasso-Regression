@@ -54,7 +54,7 @@ def app():
             column= st.selectbox("Select a column to label encode", options=list(df_imputed.columns)) 
             df_encoded =label_encode(df_imputed, column)
         elif encoding_method =='One-Hot Encoding': 
-            column =st.selectbox("Select a column to one-hot encode", options list (df_imputed.columns)) 
+            column =st.selectbox("Select a column to one-hot encode", options=list (df_imputed.columns)) 
             df_encoded = one_hot_encode(df_imputed, column)
         else:
             df_encoded = df_imputed
