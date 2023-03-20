@@ -16,11 +16,11 @@ label_encoder = preprocessing.LabelEncoder()
 data=''
 
 # Setting up the header 
-st.title("Dataset")
-st.subheader("Complete Model Lifecycle")
+st.title("-- Regression --")
+st.subheader("Complete Regression Model Lifecycle")
 
 
-Choose_file  = st.selectbox("Select filfe upload type", ("Single_file", "Two_file",))
+Choose_file  = st.selectbox("Select the number of files to upload type", ("Single_file", "Two_file",))
 
 if Choose_file== "Single_file":
     filename = st.file_uploader("upload file", type = ("csv", "xlsx"))
@@ -29,15 +29,38 @@ elif Choose_file =='Two_file':
 
     # Upload the first dataset
     df1 = st.file_uploader("Upload the first dataset", type=["csv", "xlsx"])
+    
+    # Preview the first dataset
+    if df1 is not None:
+        df1 = pd.read_csv(df1, na_values=['?', '/', '#','']) # Use pd.read_excel(df1) for Excel files
+        st.write("Preview of first dataset:")
+        st.write(df1.head())
 
     # Upload the second dataset
     df2 = st.file_uploader("Upload the second dataset", type=["csv", "xlsx"])
+    
+     # Preview the second dataset
+    if df2 is not None:
+        df2 = pd.read_csv(df1, na_values=['?', '/', '#','']) # Use pd.read_excel(df1) for Excel files
+        st.write("Preview of second dataset:")
+        st.write(df2.head())
 
     # Merge the two datasets
     if df1 is not None and df2 is not None:
         df1 = pd.read_csv(df1,na_values=['?', '/', '#','']) # Use pd.read_excel(df1) for Excel files
         df2 = pd.read_csv(df2,na_values=['?', '/', '#','']) # Use pd.read_excel(df2) for Excel files
-        data = pd.merge(df1, df2, on='id')
+    
+        # Get list of column names for each dataframe
+        cols1 = df1.columns.tolist()
+        cols2 = df2.columns.tolist()
+    
+        # Create dropdown menus for selecting columns to merge on
+        merge_on1 = st.selectbox("Select column to merge on for Dataframe 1:", cols1)
+        merge_on2 = st.selectbox("Select column to merge on for Dataframe 2:", cols2)
+    
+        # Merge the two datasets based on the selected columns
+        data = pd.merge(df1, df2, on=[merge_on1, merge_on2])
+       
         st.write(data)
     else:
         st.write("Please upload both datasets.")
@@ -128,7 +151,7 @@ if st.checkbox("Preview Dataset"):
 
 
 # show entire data
-if st.checkbox("Show all data"):
+if st.checkbox("Show all the data"):
     st.write(data)
 
 st.subheader('To Check Columns Name')
@@ -137,7 +160,7 @@ if st.checkbox("Show Column Names"):
     st.write(data.columns)
 
 # show dimensions
-if st.checkbox("Show Dimensions"):
+if st.checkbox("Show the Shape of the dataset"):
     st.write(data.shape)
 
 st.subheader('Summaery of the Data')     
