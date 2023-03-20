@@ -282,7 +282,7 @@ if st.checkbox("Drop Outliers"):
     
     
     
-#show_outliers = st.checkbox("Show outliers aftre treatement")
+"""show_outliers = st.checkbox("Show outliers aftre treatement")
 
 # Display data with or without outliers
 if show_outliers:
@@ -313,7 +313,7 @@ if treat_outliers:
         q3 = data["data"].quantile(0.75)
         iqr = q3 - q1
         data["data"] = data["data"].apply(lambda x: x if q1 - 1.5*iqr <= x <= q3 + 1.5*iqr else None)
-        data.dropna(inplace=True)
+        data.dropna(inplace=True)"""
 
 
 # visualization
