@@ -278,43 +278,7 @@ if st.checkbox("Drop Outliers"):
 
     st.write("Data with dropped outliers")
     st.write(data)
-    
-    
-    
-    
-"""show_outliers = st.checkbox("Show outliers aftre treatement")
-
-# Display data with or without outliers
-if show_outliers:
-    for k, v in data.items():
-            q1 = v.quantile(0.25)
-            q3 = v.quantile(0.75)
-            irq = q3 - q1
-            v_col = v[(v <= q1 - 1.5 * irq) | (v >= q3 + 1.5 * irq)]
-            perc = np.shape(v_col)[0] * 100.0 / np.shape(data)[0]
-            print("Column %s outliers = %.2f%%" % (k, perc))
-            st.write(k,perc)
-            
- # create a checkbox to treat outliers
-treat_outliers = st.checkbox("Treat outliers")
-
-if treat_outliers:
-    # create a selectbox to choose treatment method
-    treatment_method = st.selectbox("Select treatment method", ["Replace with median", "Replace with mean", "Remove outliers"])
-# perform treatment based on selected method
-    if treatment_method == "Replace with median":
-        median = data["data"].median()
-        data["data"] = data["data"].apply(lambda x: median if x > 3*median else x)
-    elif treatment_method == "Replace with mean":
-        mean = data["data"].mean()
-        data["data"] = data["data"].apply(lambda x: mean if x > 3*mean else x)
-    else:
-        q1 = data["data"].quantile(0.25)
-        q3 = data["data"].quantile(0.75)
-        iqr = q3 - q1
-        data["data"] = data["data"].apply(lambda x: x if q1 - 1.5*iqr <= x <= q3 + 1.5*iqr else None)
-        data.dropna(inplace=True)"""
-
+ 
 
 # visualization
 
@@ -337,7 +301,7 @@ st.subheader('Correlation Plot')
 
 # correlartion plots
 if st.checkbox("Show Correlation plots with Seaborn"):
-    st.write(sns.heatmap(data.corr()))
+    st.write(data.corr())
     st.pyplot()
 
 st.subheader('Feature_Scaling')
