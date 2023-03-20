@@ -48,17 +48,9 @@ elif Choose_file == 'Two_file':
 
     # Merge the two datasets
     if df1 is not None and df2 is not None:
-        # Get list of column names for each dataframe
-        cols1 = df1.columns.tolist()
-        cols2 = df2.columns.tolist()
-
-        # Create dropdown menus for selecting columns to merge on
-        merge_on1 = st.selectbox("Select column to merge on for Dataframe 1:", cols1)
-        merge_on2 = st.selectbox("Select column to merge on for Dataframe 2:", cols2)
-
-        # Merge the two datasets based on the selected columns
-        data = pd.merge(df1, df2, on=[merge_on1, merge_on2])
-
+        df1 = pd.read_csv(df1,na_values=['?', '/', '#','']) # Use pd.read_excel(df1) for Excel files
+        df2 = pd.read_csv(df2,na_values=['?', '/', '#','']) # Use pd.read_excel(df2) for Excel files
+        data = pd.merge(df1, df2, on='id','id', 'X', 'Y', 'month', 'day', 'FFMC', 'DMC')
         st.write(data)
     else:
         st.write("Please upload both datasets.")
