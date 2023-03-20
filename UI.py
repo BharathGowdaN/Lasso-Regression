@@ -53,8 +53,8 @@ elif Choose_file == 'Two_file':
         cols2 = df2.columns.tolist()
 
         # Create dropdown menus for selecting columns to merge on
-        merge_on1 = st.multiselect("Select column to merge on for Dataframe 1:", cols1)
-        merge_on2 = st.multiselect("Select column to merge on for Dataframe 2:", cols2)
+        merge_on1 = st.selectbox("Select column to merge on for Dataframe 1:", cols1)
+        merge_on2 = st.selectbox("Select column to merge on for Dataframe 2:", cols2)
 
         # Merge the two datasets based on the selected columns
         data = pd.merge(df1, df2, on=[merge_on1, merge_on2])
