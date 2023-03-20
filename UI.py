@@ -38,7 +38,7 @@ elif Choose_file == 'Two_file':
     if df1 is not None and df2 is not None:
         df1 = pd.read_csv(df1,na_values=['?', '/', '#','']) # Use pd.read_excel(df1) for Excel files
         df2 = pd.read_csv(df2,na_values=['?', '/', '#','']) # Use pd.read_excel(df2) for Excel files
-        data = pd.merge(df1, df2, on='id')
+        data = pd.merge(df1, df2, on=['id', 'X', 'Y', 'month', 'day', 'FFMC', 'DMC'])
         st.write(data)
     else:
         st.write("Please upload both datasets.")
