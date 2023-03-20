@@ -259,7 +259,7 @@ if show_outliers:
             st.write(k,perc)
 
 
-method = st.selectbox("Select outlier detection method", ("IQR", "Z-score"))
+method = st.selectbox("Select the method to fill the outlier ", ("IQR", "Z-score"))
 
 if st.checkbox("Fill Outliers"):
     if method == "IQR":
@@ -282,7 +282,7 @@ if st.checkbox("Drop Outliers"):
     
     
     
-show_outliers = st.checkbox("Show outliers aftre treatement")
+#show_outliers = st.checkbox("Show outliers aftre treatement")
 
 # Display data with or without outliers
 if show_outliers:
