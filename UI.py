@@ -300,9 +300,11 @@ st.plotly_chart(fig)
 st.subheader('Correlation Plot') 
 
 # correlartion plots
+# Display the correlation heatmap with Seaborn
 if st.checkbox("Show Correlation plots with Seaborn"):
-    st.write(sns.heatmap(data.corr()))
-    fig1 = sns.heatmap(data.corr())
+    corr = data.corr()
+    fig1, ax1 = plt.subplots(figsize=(10, 10))
+    sns.heatmap(corr, cmap='coolwarm', annot=True, linewidths=0.5, ax=ax1)
     st.pyplot(fig1)
 
 st.subheader('Feature_Scaling')
