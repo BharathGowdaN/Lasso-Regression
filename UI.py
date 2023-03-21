@@ -301,9 +301,9 @@ st.subheader('Correlation Plot')
 
 # correlartion plots
 if st.checkbox("Show Correlation plots with Seaborn"):
-    #st.write(sns.heatmap(data.corr()))
-    fig = sns.heatmap(data.corr())
-    st.pyplot(fig)
+    st.write(sns.heatmap(data.corr()))
+    fig1 = sns.heatmap(data.corr())
+    st.pyplot(fig1)
 
 st.subheader('Feature_Scaling')
 scaling_method = st.selectbox('Select a scaling method:', ['Standardization', 'Normalization'])
