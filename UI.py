@@ -301,7 +301,7 @@ st.subheader('Correlation Plot')
 
 # correlartion plots
 if st.checkbox("Show Correlation plots with Seaborn"):
-    st.write(data.corr())
+    st.write(sns.heatmap(data.corr()))
     st.pyplot()
 
 st.subheader('Feature_Scaling')
