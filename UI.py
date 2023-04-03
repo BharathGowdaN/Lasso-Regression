@@ -28,7 +28,7 @@ def app():
     st.write('Please enter the customer details to predict whether the customer is likely to churn or not.')
 
     # Define the input form
-    col1, col2 = st.columns(2)
+    col1 = st.columns(1)
     with col1:
         gender = st.selectbox('Gender', ['Male', 'Female'])
         SeniorCitizen = st.selectbox('Senior citizen',[0,1])
@@ -40,8 +40,6 @@ def app():
         online_security = st.selectbox('Online Security', ['No', 'Yes', 'No internet service'])
         online_backup = st.selectbox('Online Backup', ['No', 'Yes', 'No internet service'])
         device_protection = st.selectbox('Device Protection', ['No', 'Yes', 'No internet service'])
-        
-    with col2:
         tech_support = st.selectbox('Tech Support', ['No', 'Yes', 'No internet service'])
         streaming_tv = st.selectbox('Streaming TV', ['No', 'Yes', 'No internet service'])
         streaming_movies = st.selectbox('Streaming Movies', ['No', 'Yes', 'No internet service'])
