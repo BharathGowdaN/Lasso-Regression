@@ -4,7 +4,7 @@ import pickle
 from sklearn.preprocessing import LabelEncoder
 
 # Load the trained XGBoost model
-with open('C:/Users/Admin/OneDrive/Desktop/4715_b116_TelecomChurn/model_rf_smote.pkl', 'rb') as file:
+with open('randomforest_model.pkl', 'rb') as file:
     xgb_model = pickle.load(file)
 
 # Define a function to perform label encoding on categorical columns
